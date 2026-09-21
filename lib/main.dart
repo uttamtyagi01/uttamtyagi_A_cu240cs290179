@@ -1,38 +1,45 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(MaterialApp(home: StudentManagementApp()));
-
-class StudentManagementApp extends StatefulWidget {
-  @override
-  _StudentManagementAppState createState() => _StudentManagementAppState();
+void main() {
+  runApp(const MyApp());
 }
 
-class _StudentManagementAppState extends State<StudentManagementApp> {
-  int index = 0;
-
-  final screens = [
-    Center(child: Text("Home Screen", style: TextStyle(fontSize: 24))),
-    Center(child: Text("Student Profile", style: TextStyle(fontSize: 24))),
-    Center(child: Text("Attendance Records", style: TextStyle(fontSize: 24))),
-    Center(child: Text("Result Details", style: TextStyle(fontSize: 24))),
-  ];
-
-  final titles = ["Home", "Profile", "Attendance", "Result"];
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text(titles[index])),
-      body: screens[index],
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: index,
-        onTap: (i) => setState(() => index = i),
-        items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profile"),
-          BottomNavigationBarItem(icon: Icon(Icons.checklist), label: "Attendance"),
-          BottomNavigationBarItem(icon: Icon(Icons.grade), label: "Result"),
-        ],
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text('Three Buttons'),
+        ),
+        body: Center(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              ElevatedButton(
+                onPressed: () {
+                  print('Submit button pressed');
+                },
+                child: const Text('Submit'),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  print('Reset button pressed');
+                },
+                child: const Text('Reset'),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  print('Cancel button pressed');
+                },
+                child: const Text('Cancel'),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
