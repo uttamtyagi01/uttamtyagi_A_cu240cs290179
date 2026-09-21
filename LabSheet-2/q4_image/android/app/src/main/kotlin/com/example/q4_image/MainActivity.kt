@@ -1,5 +1,0 @@
-package com.example.q4_image
-
-import io.flutter.embedding.android.FlutterActivity
-
-class MainActivity : FlutterActivity()
